@@ -11,7 +11,7 @@ then
 else
 echo 
 
-curl -X POST --data-urlencode 'payload={"text": "Droplet:'$h' \n Message : Apache webserver is Down.\nIf you see this meassage consecutively please check server. \nOtherwise apache is successfully Restarted. "}' https://hooks.slack.com/services/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
+curl -X POST --data-urlencode 'payload={"text": "Droplet:'$h' \n Message : Apache webserver is Down.\nIf you see this meassage consecutively please check server. \nOtherwise apache is successfully Restarted. "}' https://hooks.slack.com/<hook url>
 
 #sudo apachectl start
 fi 
@@ -23,7 +23,7 @@ then
 
 echo
 
-curl -X POST --data-urlencode 'payload={"text": "Droplet:'$h' \n Message : Mysql server is Down.\nIf you see this meassage consecutively please check server. \nOtherwise apache is successfully Restarted. "}' https://hooks.slack.com/services/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
+curl -X POST --data-urlencode 'payload={"text": "Droplet:'$h' \n Message : Mysql server is Down.\nIf you see this meassage consecutively please check server. \nOtherwise apache is successfully Restarted. "}' https://hooks.slack.com/<hook url>
 #sudo systemctl start mariadb
 fi
 
