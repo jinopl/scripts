@@ -20,7 +20,7 @@ full_backup() {
         rm -rf $BACKUP_DIR/*
         echo `date '+%Y-%m-%d %H:%M:%S:%s'`": Cleanup the backup folder is done! Starting backup" >> $BACKUP_DIR/xtrabackup.log
         
-        xtrabackup --backup --user=$USER --password=$SECRET --history --compress --compress-threads=4 --target-dir=$BACKUP_DIR/FULL
+        xtrabackup --backup --user=bkpuser --password=$SECRET --history --compress --compress-threads=4 --target-dir=$BACKUP_DIR/FULL
         echo `date '+%Y-%m-%d %H:%M:%S:%s'`": Backup Done!" >> $BACKUP_DIR/xtrabackup.log
 }
 
@@ -88,7 +88,7 @@ restore()
 }
 
 ## Parameters
-USER = 'user'
+
 SECRET='mysql-user-password'
 BACKUP_DIR=/mysqldump/xtrabackup/$(date +\%Y-\%m-\%d)
 DATA_DIR=/mysqldata
