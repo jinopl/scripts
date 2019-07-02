@@ -20,7 +20,7 @@ full_backup() {
         rm -rf $BACKUP_DIR/*
         echo `date '+%Y-%m-%d %H:%M:%S:%s'`": Cleanup the backup folder is done! Starting backup" >> $BACKUP_DIR/xtrabackup.log
         
-        xtrabackup --backup --user=bkpuser --password=$SECRET --history --compress --compress-threads=4 --target-dir=$BACKUP_DIR/FULL
+        xtrabackup --backup -u bkpuser --password=$SECRET --history --compress --compress-threads=4 --target-dir=$BACKUP_DIR/FULL
         echo `date '+%Y-%m-%d %H:%M:%S:%s'`": Backup Done!" >> $BACKUP_DIR/xtrabackup.log
 }
 
@@ -41,9 +41,9 @@ incremental_backup()
         echo `date '+%Y-%m-%d %H:%M:%S:%s'`": Starting Incremental backup $NUMBER" >> $BACKUP_DIR/xtrabackup.log
         if [ $NUMBER -eq 1 ]
         then
-                xtrabackup --backup  --history --slave-info --target-dir=$BACKUP_DIR/inc$NUMBER --incremental-basedir=$BACKUP_DIR/FULL 
+                xtrabackup --backup -u bkpuser --password=$SECRET --history --target-dir=$BACKUP_DIR/inc$NUMBER --incremental-basedir=$BACKUP_DIR/FULL 
         else
-                xtrabackup --backup  --history --slave-info --target-dir=$BACKUP_DIR/inc$NUMBER --incremental-basedir=$BACKUP_DIR/inc$(($NUMBER - 1)) 
+                xtrabackup --backup -u bkpuser --password=$SECRET --history --target-dir=$BACKUP_DIR/inc$NUMBER --incremental-basedir=$BACKUP_DIR/inc$(($NUMBER - 1)) 
         fi
 
         echo $NUMBER > $BACKUP_DIR/last_incremental_number
