@@ -18,7 +18,7 @@ if [[ $load -gt "2" ]];
  echo "Top MEM" >> /tmp/report.txt; echo "======" >> /tmp/report.txt
  $topmem  >>  /tmp/report.txt;
  echo " " >>  /tmp/report.txt;
- echo "ALERT - HIGH LOAD - $load "| mail -s "ALERT - HIGH LOAD" jinoriosis@gmail.com < /tmp/report.txt ;
+ echo "ALERT - HIGH LOAD - $load "| mail -s "ALERT - HIGH LOAD" main@gmail.com < /tmp/report.txt ;
  else exit 0;
 
 fi
